@@ -39,7 +39,7 @@
             return [self topMostViewControllerOfViewController:(UIViewController *)nextResponder];
         }
     }
-    NSLog(@"top viewController is %@", viewController);
+//    NSLog(@"top viewController is %@", viewController);
     return viewController;
 }
 

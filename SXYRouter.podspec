@@ -2,7 +2,7 @@ Pod::Spec.new do |s|
   s.name         = "SXYRouter"
   s.version      = "1.0.0"
   s.ios.deployment_target = '7.0'
-  s.osx.deployment_target = '10.8'
+ # s.osx.deployment_target = '10.8'
   s.summary      = "router"
   s.homepage     = "https://github.com/wuhaizeng/SXYRouter"
   s.license      = "MIT"

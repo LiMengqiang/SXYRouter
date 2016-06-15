@@ -340,7 +340,7 @@
         }
 
         for (UIViewController *viewController in navigationController.viewControllers) {
-            NSLog(@"view controller is %@\n params is %@",viewController, viewController.params);
+//            NSLog(@"view controller is %@\n params is %@",viewController, viewController.params);
             NSString *subRouter = viewController.params[@"route"];
             if ([router isEqualToString:subRouter]) {
                 [navigationController popToViewController:viewController animated:YES];

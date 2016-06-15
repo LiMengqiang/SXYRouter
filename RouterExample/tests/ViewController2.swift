@@ -19,9 +19,9 @@ class ViewController2: BaseViewController {
 
     @IBAction func doBtn(sender: AnyObject) {
         (sender as? UIButton)?.setTitle(String(self.dynamicType), forState: UIControlState.Normal)
-//        SXYRouter.shared().presentWithRouter("SXY://ViewController3", parameters: nil, wrap: true)
+        SXYRouter.shared().presentWithRouter("SXY://ViewController3", parameters: nil, wrap: true)
 //        SXYRouter.shared().callBlock("SXY://block", parameters: ["12":"43"])
-        SXYRouter.shared().backToRouter(nil)
+//        SXYRouter.shared().backToRouter(nil)
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
