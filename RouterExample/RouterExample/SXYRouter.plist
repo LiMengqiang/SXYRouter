@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>classType</key>
+		<string>RDVTabBarController</string>
+		<key>URL</key>
+		<string>SXY://TabBarController</string>
+		<key>describe</key>
+		<string>none</string>
+	</dict>
+	<dict>
+		<key>classType</key>
+		<string>UserViewController</string>
+		<key>URL</key>
+		<string>SXY://UserViewController</string>
+		<key>describe</key>
+		<string>none</string>
+	</dict>
+	<dict>
+		<key>classType</key>
+		<string>ViewController1</string>
+		<key>URL</key>
+		<string>SXY://ViewController1</string>
+		<key>describe</key>
+		<string>none</string>
+	</dict>
+	<dict>
+		<key>classType</key>
+		<string>ViewController2</string>
+		<key>URL</key>
+		<string>SXY://ViewController2</string>
+		<key>describe</key>
+		<string>none</string>
+	</dict>
+	<dict>
+		<key>classType</key>
+		<string>ViewController3</string>
+		<key>URL</key>
+		<string>SXY://ViewController3</string>
+		<key>describe</key>
+		<string>none</string>
+	</dict>
+	<dict>
+		<key>classType</key>
+		<string>ViewController4</string>
+		<key>URL</key>
+		<string>SXY://ViewController4</string>
+		<key>describe</key>
+		<string>none</string>
+	</dict>
+	<dict>
+		<key>classType</key>
+		<string>PostViewController</string>
+		<key>URL</key>
+		<string>SXY://PostViewController</string>
+		<key>describe</key>
+		<string>none</string>
+	</dict>
+</array>
+</plist>
