@@ -323,7 +323,6 @@
 {
     UIViewController *currentViewController = [UIViewController topMostViewController];
 
-
     if (currentViewController.navigationController) {
         UINavigationController *navigationController = currentViewController.navigationController;
 
@@ -362,6 +361,7 @@
             }
             return;
         }
+
         NSString *subRouter = currentViewController.params[@"route"];
         if ([router isEqualToString:subRouter]) {
 

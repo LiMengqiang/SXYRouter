@@ -11,8 +11,6 @@ import UIKit
 class PostViewController: UIViewController {
 
     @IBAction func press(sender: AnyObject) {
-
-//        Navigator.pushURL("myapp://view1/")
         SXYRouter.shared().backToRouter(nil)
     }
     override func viewDidLoad() {
