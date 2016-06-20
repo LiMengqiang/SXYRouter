@@ -328,58 +328,65 @@
                 from:(UIViewController*)from
 {
     UIViewController *currentViewController = from;
-    if (!from) {
-        from = [UIViewController topMostViewController];
+    if (!currentViewController) {
+        currentViewController = [UIViewController topMostViewController];
     }
-    [UIViewController topMostViewController];
+
+    __weak __typeof(self) weakSelf = self;
+    void (^DismissViewController)(UIViewController *from, BOOL continueDismiss) = ^(UIViewController *from, BOOL continueDismiss){
+        UIViewController *presentingViewController = from.presentingViewController;
+        if (presentingViewController) {
+            [from dismissViewControllerAnimated:NO completion:^(){
+                if (continueDismiss) {
+                    [weakSelf backToRouter:router from:presentingViewController];
+                }
+            }];
+        }
+    };
+
+    void (^back)(UINavigationController *navigationController) =
+                ^(UINavigationController *navigationController){
+                    if (!router) {
+                        if (navigationController.viewControllers.count > 1) {
+                            [navigationController popViewControllerAnimated:YES];
+                            return;
+                        }else{
+                            DismissViewController(currentViewController, NO);
+                            return;
+                        }
+                    }
+                    for (UIViewController *viewController in navigationController.viewControllers) {
+                        NSString *subRouter = viewController.params[@"route"];
+                        if ([router isEqualToString:subRouter]) {
+                            [navigationController popToViewController:viewController animated:YES];
+                            return;
+                        }
+                    }
+                    DismissViewController(currentViewController, YES);
+                };
+
+    if ([currentViewController isKindOfClass:[UINavigationController class]]) {
+        UINavigationController *navigationController = (UINavigationController*)currentViewController;
+        back(navigationController);
+        return;
+    }
 
     if (currentViewController.navigationController) {
         UINavigationController *navigationController = currentViewController.navigationController;
+        back(navigationController);
+        return;
+    }
 
-        if (!router) {
-            if (navigationController.viewControllers.count > 1) {
-                [navigationController popViewControllerAnimated:YES];
-                return;
-            }else{
-                UIViewController *presentingViewController = currentViewController.presentingViewController;
-                if (presentingViewController) {
-                    [currentViewController dismissViewControllerAnimated:YES completion:nil];
-                }
-                return;
-            }
-        }
-
-        for (UIViewController *viewController in navigationController.viewControllers) {
-            NSString *subRouter = viewController.params[@"route"];
-            if ([router isEqualToString:subRouter]) {
-                [navigationController popToViewController:viewController animated:YES];
-                return;
-            }
-        }
-        UIViewController *presentingViewController = currentViewController.presentingViewController;
-        if (presentingViewController) {
-            [currentViewController dismissViewControllerAnimated:NO completion:^{
-                [self backToRouter:router];
-            }];
-        }
+    //没有NavigationController
+    if (!router) {
+        DismissViewController(currentViewController, NO);
+        return;
+    }
+    NSString *subRouter = currentViewController.params[@"route"];
+    if ([router isEqualToString:subRouter]) {
+        return;
     }else{
-        if (!router) {
-            UIViewController *presentingViewController = currentViewController.presentingViewController;
-            if (presentingViewController) {
-                [currentViewController dismissViewControllerAnimated:YES completion:nil];
-            }
-            return;
-        }
-
-        NSString *subRouter = currentViewController.params[@"route"];
-        if ([router isEqualToString:subRouter]) {
-
-            return;
-        }else{
-            [currentViewController dismissViewControllerAnimated:NO completion:^{
-                [self backToRouter:router];
-            }];
-        }
+        DismissViewController(currentViewController, YES);
     }
 }
 
