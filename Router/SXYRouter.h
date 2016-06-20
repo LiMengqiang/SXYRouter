@@ -61,6 +61,8 @@ typedef id (^SXYRouterBlock)(NSDictionary *params);
                                     wrap:(BOOL)wrap;
 
 - (void)backToRouter:(NSString*)router;
+- (void)backToRouter:(NSString *)router
+                from:(UIViewController*)from;
 
 @end
 

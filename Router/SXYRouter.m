@@ -321,7 +321,17 @@
 
 - (void)backToRouter:(NSString*)router
 {
-    UIViewController *currentViewController = [UIViewController topMostViewController];
+    [self backToRouter:router from:nil];
+}
+
+- (void)backToRouter:(NSString *)router
+                from:(UIViewController*)from
+{
+    UIViewController *currentViewController = from;
+    if (!from) {
+        from = [UIViewController topMostViewController];
+    }
+    [UIViewController topMostViewController];
 
     if (currentViewController.navigationController) {
         UINavigationController *navigationController = currentViewController.navigationController;
@@ -340,7 +350,6 @@
         }
 
         for (UIViewController *viewController in navigationController.viewControllers) {
-//            NSLog(@"view controller is %@\n params is %@",viewController, viewController.params);
             NSString *subRouter = viewController.params[@"route"];
             if ([router isEqualToString:subRouter]) {
                 [navigationController popToViewController:viewController animated:YES];
