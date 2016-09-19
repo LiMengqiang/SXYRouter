@@ -319,6 +319,12 @@
     return viewController;
 }
 
+- (UIViewController*)matchControllerWithRouter:(NSString*)router
+                                    parameters:(NSDictionary*)parameters {
+    UIViewController *viewController = [self setViewControllerParametersWithRouter:router parameters:parameters];
+    return viewController;
+}
+
 - (void)backToRouter:(NSString*)router
 {
     [self backToRouter:router from:nil];

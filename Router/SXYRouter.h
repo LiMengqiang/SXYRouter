@@ -60,12 +60,15 @@ typedef id (^SXYRouterBlock)(NSDictionary *params);
                                animated:(BOOL)animated
                                     wrap:(BOOL)wrap;
 
+- (UIViewController*)matchControllerWithRouter:(NSString*)router
+                                    parameters:(NSDictionary*)parameters;
+
+
 - (void)backToRouter:(NSString*)router;
 - (void)backToRouter:(NSString *)router
                 from:(UIViewController*)from;
 
-- (UIViewController*)setViewControllerParametersWithRouter:(NSString*)router
-                                                parameters:(NSDictionary*)parameters;
+
 
 @end
 
