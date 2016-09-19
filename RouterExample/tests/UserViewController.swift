@@ -20,7 +20,14 @@ class UserViewController: BaseViewController {
         SXYRouter.shared().callBlock("SXY://block", parameters: ["sss":btn])
 //        var x:Int = Int(xyz!)!
 //        if x == 5 {
-            SXYRouter.shared().pushWithRouter("SXY://ViewController1", parameters: nil)
+
+        let x = self.params["index"] as! String;
+//        var y = (x as String).integerValue+1
+//        String(1 + x?.integerValue)
+        var a:Int = Int(x)!
+        a += 1
+        let y = "SXY://UserViewController/" + String(a)
+            SXYRouter.shared().pushWithRouter(y, parameters: nil)
 //            return
 //        }
 //        x += 1
@@ -28,12 +35,18 @@ class UserViewController: BaseViewController {
 //        let s = "SXY://UserViewController" + xyz!
 //        SXYRouter.shared().pushWithRouter(s, parameters: ["xyz":xyz!])
     }
+    @IBAction func pressed2(sender: AnyObject) {
+
+        SXYRouter.shared().backToRouter("SXY://UserViewController/3")
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         navigationItem.title = String(self.dynamicType)
-        print("xyz is ",xyz)
+//        print("xyz is ",xyz)
+        print(self.params)
+
         let route = params["route"]
         doBtn.setTitle(route as? String, forState: UIControlState.Normal)
     }

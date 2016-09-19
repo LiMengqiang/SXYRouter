@@ -14,7 +14,7 @@
 		<key>classType</key>
 		<string>UserViewController</string>
 		<key>URL</key>
-		<string>SXY://UserViewController</string>
+		<string>SXY://UserViewController/:index</string>
 		<key>describe</key>
 		<string>none</string>
 	</dict>

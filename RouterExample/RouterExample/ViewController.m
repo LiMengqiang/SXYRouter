@@ -20,7 +20,7 @@
     // Do any additional setup after loading the view, typically from a nib.
 }
 - (IBAction)doBtn:(id)sender {
-    [[SXYRouter shared] pushWithRouter:@"SXY://UserViewController" parameters:@{@"xyz":@"1",@"vc2":@"sxyz2"}];
+    [[SXYRouter shared] pushWithRouter:@"SXY://UserViewController/1" parameters:@{@"xyz":@"1",@"vc2":@"sxyz2"}];
 }
 
 - (void)didReceiveMemoryWarning {
